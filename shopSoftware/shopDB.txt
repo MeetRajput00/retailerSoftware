@@ -1,0 +1,118 @@
+-- ******************SqlDBM: Microsoft SQL Server * *****************
+-- ******************************************************************
+
+-- ************************************** [IdTypes]
+CREATE TABLE [IdTypes]
+(
+ [Id]          int IDENTITY (1, 1) NOT NULL ,
+ [Name]        varchar(255) NOT NULL ,
+ [Description] varchar(255) NULL ,
+
+
+ CONSTRAINT [PK_12] PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+GO
+-- ******************SqlDBM: Microsoft SQL Server * *****************
+-- ******************************************************************
+
+-- ************************************** [Services]
+CREATE TABLE [Services]
+(
+ [Id]          int IDENTITY (1, 1) NOT NULL ,
+ [Name]        varchar(255) NOT NULL ,
+ [Charges]     decimal(18,2) NOT NULL ,
+ [Description] varchar(255) NULL ,
+
+
+ CONSTRAINT [PK_17] PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+GO
+-- ******************SqlDBM: Microsoft SQL Server * *****************
+-- ******************************************************************
+
+-- ************************************** [Customers]
+CREATE TABLE [Customers]
+(
+ [Id]          int IDENTITY (1, 1) NOT NULL ,
+ [Name]        varchar(255) NOT NULL ,
+ [IdType]      int NULL ,
+ [PhoneNumber] int NULL ,
+ [Email]       varchar(255) NULL ,
+ [Address]     nvarchar(255) NULL ,
+ [IdNumber]    varchar(255) NULL ,
+ [Occupation]  varchar(255) NULL ,
+ [DOB]         datetime NULL ,
+
+
+ CONSTRAINT [PK_5] PRIMARY KEY CLUSTERED ([Id] ASC),
+ CONSTRAINT [FK_25] FOREIGN KEY ([IdType])  REFERENCES [IdTypes]([Id])
+);
+GO
+
+
+CREATE NONCLUSTERED INDEX [FK_27] ON [Customers]
+ (
+  [IdType] ASC
+ )
+
+GO
+-- ******************SqlDBM: Microsoft SQL Server * *****************
+-- ******************************************************************
+
+-- ************************************** [Accounts]
+CREATE TABLE [Accounts]
+(
+ [Id]         int IDENTITY (1, 1) NOT NULL ,
+ [CustomerId] int NOT NULL ,
+ [Balance]    decimal(18,2) NOT NULL ,
+
+
+ CONSTRAINT [PK_50] PRIMARY KEY CLUSTERED ([Id] ASC),
+ CONSTRAINT [FK_51] FOREIGN KEY ([CustomerId])  REFERENCES [Customers]([Id])
+);
+GO
+
+
+CREATE NONCLUSTERED INDEX [FK_53] ON [Accounts]
+ (
+  [CustomerId] ASC
+ )
+
+GO
+-- ******************SqlDBM: Microsoft SQL Server * *****************
+-- ******************************************************************
+
+-- ************************************** [Transactions]
+CREATE TABLE [Transactions]
+(
+ [Id]                int IDENTITY (1, 1) NOT NULL ,
+ [CustomerId]        int NOT NULL ,
+ [ServiceId]         int NOT NULL ,
+ [Date]              datetime NOT NULL ,
+ [Amount]            decimal(18,2) NOT NULL ,
+ [ServiceCount]      int NOT NULL ,
+ [TotalPaidAmount]   decimal(18,2) NOT NULL ,
+ [TransactionNumber] int NOT NULL ,
+
+
+ CONSTRAINT [PK_33] PRIMARY KEY CLUSTERED ([Id] ASC),
+ CONSTRAINT [FK_37] FOREIGN KEY ([CustomerId])  REFERENCES [Customers]([Id]),
+ CONSTRAINT [FK_40] FOREIGN KEY ([ServiceId])  REFERENCES [Services]([Id])
+);
+GO
+
+
+CREATE NONCLUSTERED INDEX [FK_39] ON [Transactions]
+ (
+  [CustomerId] ASC
+ )
+
+GO
+
+CREATE NONCLUSTERED INDEX [FK_42] ON [Transactions]
+ (
+  [ServiceId] ASC
+ )
+
+GO
+
