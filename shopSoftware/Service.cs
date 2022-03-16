@@ -40,7 +40,7 @@ namespace shopSoftware
 
         private void serviceCharges_TextChanged(object sender, EventArgs e)
         {
-
+            global.GlobalCharges = Convert.ToInt32(serviceCharges.Text);
         }
     }
 }

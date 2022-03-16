@@ -13,10 +13,8 @@ namespace shopSoftware
 {
     public partial class Transaction : Form
     {
-        Service serviceObj;
-        public Transaction(Service obj)
+        public Transaction()
         {
-            this.serviceObj = obj;
             InitializeComponent();
         }
 
@@ -27,15 +25,15 @@ namespace shopSoftware
 
         private void transactionSubmit_Click(object sender, EventArgs e)
         {
-            int am = Convert.ToInt32(serviceObj.serviceCharges.Text);
-            int pamount = am * Convert.ToInt32(serviceCount.Text);
+            int pamount = Convert.ToInt32(serviceCount.Text) * global.GlobalCharges;
+            amount.Text = Convert.ToString(pamount);
             try
             {
                 SqlConnection cnn;
                 var connectionString = "data source=(local);initial catalog = shopDB; persist security info = True;Integrated Security = True;";
                 cnn = new SqlConnection(connectionString);
                 cnn.Open();
-                var cmd = @"INSERT INTO [dbo].[Transactions]([Date],[Amount],[ServiceCount],[TotalPaidAmount]) VALUES ('" +DateTime.Now + "'," + pamount + ",'" + serviceCount.Text + "','" + paidAmount.Text+"')";
+                var cmd = @"INSERT INTO [dbo].[Transactions]([CustomerId],[ServiceId],[Date],[Amount],[ServiceCount],[TotalPaidAmount]) VALUES ("+0+","+0+","+"'" +DateTime.Now.ToString() + "'," + pamount + ",'" + serviceCount.Text + "','" + paidAmount.Text+"')";
                 SqlCommand command = new SqlCommand(cmd, cnn);
                 command.ExecuteNonQuery();
                 cnn.Close();

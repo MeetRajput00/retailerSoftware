@@ -114,15 +114,15 @@ namespace shopSoftware
             Account accObj = new Account();
             accObj.Show();
         }
-        Service serviceObj=new Service();
         private void addToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            Transaction tranObj = new Transaction(serviceObj);
+            Transaction tranObj = new Transaction();
             tranObj.Show();
         }
 
         private void addToolStripMenuItem4_Click(object sender, EventArgs e)
         {
+            Service serviceObj = new Service();
             serviceObj.Show();
         }
     }

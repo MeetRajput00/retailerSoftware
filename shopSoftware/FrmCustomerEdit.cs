@@ -40,5 +40,10 @@ namespace shopSoftware
                 //throw;
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

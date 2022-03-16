@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.serviceName = new System.Windows.Forms.TextBox();
-            this.serviceCharges = new System.Windows.Forms.TextBox();
             this.serviceDescription = new System.Windows.Forms.RichTextBox();
             this.serviceSubmit = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.serviceCharges = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -46,16 +46,6 @@
             this.label1.Size = new System.Drawing.Size(117, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Service Name:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(68, 110);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 21);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Charges:";
             // 
             // label3
             // 
@@ -73,14 +63,6 @@
             this.serviceName.Name = "serviceName";
             this.serviceName.Size = new System.Drawing.Size(166, 23);
             this.serviceName.TabIndex = 9;
-            // 
-            // serviceCharges
-            // 
-            this.serviceCharges.Location = new System.Drawing.Point(264, 110);
-            this.serviceCharges.Name = "serviceCharges";
-            this.serviceCharges.Size = new System.Drawing.Size(166, 23);
-            this.serviceCharges.TabIndex = 10;
-            this.serviceCharges.TextChanged += new System.EventHandler(this.serviceCharges_TextChanged);
             // 
             // serviceDescription
             // 
@@ -102,6 +84,24 @@
             this.serviceSubmit.Text = "Submit";
             this.serviceSubmit.UseVisualStyleBackColor = false;
             this.serviceSubmit.Click += new System.EventHandler(this.serviceSubmit_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(68, 110);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 21);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Charges:";
+            // 
+            // serviceCharges
+            // 
+            this.serviceCharges.Location = new System.Drawing.Point(264, 110);
+            this.serviceCharges.Name = "serviceCharges";
+            this.serviceCharges.Size = new System.Drawing.Size(166, 23);
+            this.serviceCharges.TabIndex = 10;
+            this.serviceCharges.TextChanged += new System.EventHandler(this.serviceCharges_TextChanged);
             // 
             // Service
             // 
@@ -126,11 +126,11 @@
         #endregion
 
         private Label label1;
-        private Label label2;
         private Label label3;
         private TextBox serviceName;
         private RichTextBox serviceDescription;
         private Button serviceSubmit;
+        private Label label2;
         public TextBox serviceCharges;
     }
 }
